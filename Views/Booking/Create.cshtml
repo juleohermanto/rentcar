@@ -1,0 +1,107 @@
+﻿@model RentCar.Models.TrRental
+
+@{
+    ViewData["Title"] = "Konfirmasi Sewa";
+    var gambar = Model.MsCar.MsCarImages?.FirstOrDefault()?.image_link ?? "https://via.placeholder.com/600x400?text=No+Image";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="booking-page-wrapper">
+    <div class="container">
+
+        <h2 class="booking-title-header">Sewa Mobil</h2>
+
+        <div class="booking-card-fixed">
+
+            <div class="booking-image-box">
+
+                @if (ViewBag.PrevCarId != null)
+                {
+                    <a asp-action="Create"
+                       asp-route-carId="@ViewBag.PrevCarId"
+                       asp-route-pickupDate="@ViewBag.PickupDate?.ToString("yyyy-MM-dd")"
+                       asp-route-returnDate="@ViewBag.ReturnDate?.ToString("yyyy-MM-dd")"
+               
+                       asp-route-sortOrder="@ViewBag.SortOrder"
+                
+                       class="nav-badge nav-left text-decoration-none">
+                        <i class="bi bi-chevron-left"></i> Prev
+                    </a>
+                }
+
+                <img src="@gambar" alt="@Model.MsCar.name">
+
+                @if (ViewBag.NextCarId != null)
+                {
+                    <a asp-action="Create"
+                       asp-route-carId="@ViewBag.NextCarId"
+                       asp-route-pickupDate="@ViewBag.PickupDate?.ToString("yyyy-MM-dd")"
+                       asp-route-returnDate="@ViewBag.ReturnDate?.ToString("yyyy-MM-dd")"
+                 
+                       asp-route-sortOrder="@ViewBag.SortOrder"
+                 
+                       class="nav-badge nav-right text-decoration-none">
+                        Next <i class="bi bi-chevron-right"></i>
+                    </a>
+                }
+            </div>
+
+            <div class="booking-body">
+                <h5 class="info-title">Informasi Mobil</h5>
+
+                <table class="custom-table">
+                    <tbody>
+                        <tr>
+                            <td class="td-label">Tipe Mobil</td>
+                            <td class="td-value">@Model.MsCar.model</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Nama Mobil</td>
+                            <td class="td-value">@Model.MsCar.name</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Transmisi</td>
+                            <td class="td-value">@Model.MsCar.transmission</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Jumlah Penumpang</td>
+                            <td class="td-value">@Model.MsCar.number_of_car_seats Penumpang</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Nama Penyewa</td>
+                            <td class="td-value">@User.Identity.Name</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Tanggal Sewa</td>
+                            <td class="td-value">
+                                @Model.rental_date.ToString("dd MMM yyyy") <span class="text-muted" style="font-size:0.8em">s.d.</span><br>
+                                @Model.return_date.ToString("dd MMM yyyy")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Harga Sewa</td>
+                            <td class="td-value">Rp @Convert.ToDecimal(Model.MsCar.price_per_day).ToString("N0") / hari</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label text-dark">Total Harga Sewa</td>
+                            <td class="td-value fw-bold text-dark">Rp @Convert.ToDecimal(Model.total_price).ToString("N0")</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <form asp-action="Create" method="post">
+                    <input type="hidden" asp-for="car_id" />
+                    <input type="hidden" asp-for="rental_date" />
+                    <input type="hidden" asp-for="return_date" />
+                    <input type="hidden" asp-for="total_price" />
+
+                    <button type="submit" class="btn-sewa-final">
+                        Sewa
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

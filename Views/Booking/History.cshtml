@@ -1,0 +1,84 @@
+﻿@model IEnumerable<RentCar.Models.TrRental>
+
+@{
+    ViewData["Title"] = "Riwayat Penyewaan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="history-wrapper">
+    <div class="container">
+
+
+        <h2 class="history-title-center">Mobil yang Pernah Disewa</h2>
+
+        <div class="history-grid-card">
+            <div class="table-responsive">
+                <table class="grid-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Tanggal Sewa</th>
+                            <th style="width: 20%;">Mobil</th>
+                            <th>Harga Sewa per Hari</th>
+                            <th>Total Hari</th>
+                            <th>Total Harga</th>
+                            <th>Status Pembayaran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count() == 0)
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center py-5 text-muted">Belum ada riwayat penyewaan.</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model)
+                            {
+                                int durasi = (item.return_date - item.rental_date).Days;
+                                if (durasi < 1) durasi = 1;
+
+                                <tr>
+                                    <td>
+                                        @item.rental_date.ToString("dd MMMM yyyy") - <br>
+                                        @item.return_date.ToString("dd MMMM yyyy")
+                                    </td>
+
+                                    <td>
+                                        <div style="font-weight:700; color:#333;">@item.MsCar.name</div>
+                                        <small class="text-muted">@item.MsCar.year</small>
+                                    </td>
+
+                                    <td>
+                                        Rp. @Convert.ToDecimal(item.MsCar.price_per_day).ToString("N0")
+                                    </td>
+
+                                    <td>
+                                        @durasi Hari
+                                    </td>
+
+                                    <td>
+                                        <div style="font-weight:700; color:#333;">
+                                            Rp. @Convert.ToDecimal(item.total_price).ToString("N0")
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        @if (item.payment_status)
+                                        {
+                                            <span class="text-status-lunas">Sudah Dibayar</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-status-belum">Belum Dibayar</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

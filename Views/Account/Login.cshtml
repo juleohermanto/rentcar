@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <h2 class="login-title">Login ke RentCar</h2>
+
+        <form method="post" action="/Account/Login">
+
+            <div class="login-form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="login-input" placeholder="Masukkan username Anda" required>
+            </div>
+
+            <div class="login-form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="login-input" placeholder="Masukkan password Anda" required>
+            </div>
+
+            <button type="submit" class="btn-login">Login</button>
+
+            <div class="login-footer">
+                <a href="/Account/Register">Belum punya akun? Registrasi disini</a>
+            </div>
+
+        </form>
+    </div>
+</div>

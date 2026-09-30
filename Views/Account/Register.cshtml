@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Registrasi";
+}
+
+<div class="login-wrapper">
+    <div class="login-card" style="max-width: 500px; padding: 30px;">
+        <h2 class="login-title">Registrasi ke RentCar</h2>
+
+        <form method="post" action="/Account/Register">
+
+            <div class="login-form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" name="name" class="login-input" placeholder="Masukkan nama lengkap Anda" required>
+            </div>
+
+            <div class="login-form-group">
+                <label>Email</label>
+                <input type="email" name="email" class="login-input" placeholder="Masukkan email Anda" required>
+            </div>
+
+            <div class="login-form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="login-input" placeholder="Masukkan password Anda" required>
+            </div>
+
+            <div class="login-form-group">
+                <label>Re-Password</label>
+                <input type="password" name="rePassword" class="login-input" placeholder="Masukkan kembali password Anda" required>
+            </div>
+
+            <div class="login-form-group">
+                <label>Nomor Telepon</label>
+                <input type="text" name="phone_number" class="login-input" placeholder="Masukkan nomor telefon Anda" required>
+            </div>
+
+            <div class="login-form-group">
+                <label>Alamat</label>
+                <input type="text" name="address" class="login-input" placeholder="Masukkan alamat Anda" required>
+            </div>
+
+            @if (ViewBag.Error != null)
+            {
+                <div style="color: red; text-align: center; margin-bottom: 10px;">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <button type="submit" class="btn-login">Registrasi</button>
+
+            <div class="login-footer">
+                <a href="/Account/Login">Sudah punya akun? Login disini</a>
+            </div>
+
+        </form>
+    </div>
+</div>

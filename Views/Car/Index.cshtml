@@ -1,0 +1,125 @@
+﻿@model IEnumerable<RentCar.Models.MsCar>
+
+@{
+    ViewData["Title"] = "Daftar Mobil";
+    string pickupStr = ViewBag.PickupDate?.ToString("yyyy-MM-dd");
+    string returnStr = ViewBag.ReturnDate?.ToString("yyyy-MM-dd");
+}
+
+<div class="hero-section">
+    <h1>Selamat Datang di Rental Mobil Kami</h1>
+
+    <div class="search-container">
+
+        <form asp-controller="Car" asp-action="Index" method="get" class="search-form" id="formPencarian">
+
+            <div class="form-group">
+                <label>Pickup Date:</label>
+                <input type="date" name="pickupDate" id="tglAmbil" class="form-control" value="@ViewBag.PickupDate?.ToString("yyyy-MM-dd")">
+            </div>
+
+            <div class="form-group">
+                <label>Return Date:</label>
+                <input type="date" name="returnDate" id="tglKembali" class="form-control" value="@ViewBag.ReturnDate?.ToString("yyyy-MM-dd")">
+            </div>
+
+            <div class="form-group">
+                <label>Filter Tahun Pembuatan</label>
+                <select name="year" class="form-control">
+                    <option value="">Semua Tahun</option>
+                    <!option value="2023" @(ViewBag.Year == 2023 ? "selected" : "")>2023</!option>
+                    <!option value="2022" @(ViewBag.Year == 2022 ? "selected" : "")>2022</!option>
+                    <!option value="2021" @(ViewBag.Year == 2021 ? "selected" : "")>2021</!option>
+                    <!option value="2020" @(ViewBag.Year == 2020 ? "selected" : "")>2020</!option>
+                </select>
+            </div>
+
+            <div class="form-group button-group">
+                <br> <button type="submit" class="btn btn-search">Cari</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="car-list-container">
+
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            window.onload = function() {
+                alert("@Html.Raw(TempData["Error"])");
+            };
+        </script>
+    }
+   
+    @if (Model.Count() > 0)
+    {
+        <div class="d-flex justify-content-end mb-3 align-items-center">
+            <form asp-controller="Car" asp-action="Index" method="get" class="d-flex align-items-center">
+                
+                <input type="hidden" name="pickupDate" value="@pickupStr">
+                <input type="hidden" name="returnDate" value="@returnStr">
+                <input type="hidden" name="year" value="@ViewBag.Year">
+
+                <label class="me-2 fw-bold" style="white-space: nowrap;">Sortir Berdasarkan:</label>
+                
+                <select name="sortOrder" class="form-control form-select" style="width: auto;" onchange="this.form.submit()">
+                
+                    <!option value="harga_rendah" @(ViewBag.SortOrder == "harga_rendah" ? "selected" : "")>Harga Terendah - Tertinggi</!option>
+                    <!option value="harga_tinggi" @(ViewBag.SortOrder == "harga_tinggi" ? "selected" : "")>Harga Tertinggi - Terendah</!option>
+                    <!option value="nama_az" @(ViewBag.SortOrder == "nama_az" ? "selected" : "")>Nama (A-Z)</!option>
+                    <!option value="tahun_terbaru" @(ViewBag.SortOrder == "tahun_terbaru" ? "selected" : "")>Tahun Terbaru</!option>
+                </select>
+            </form>
+        </div>
+    }
+    <br />
+    <div class="car-grid-system">
+        @foreach (var item in Model)
+        {
+            <div class="custom-car-card">
+
+                @{
+                    var gambar = item.MsCarImages?.FirstOrDefault()?.image_link;
+                    if (string.IsNullOrEmpty(gambar)) //Kalau misalkan gambarnya kosong / lupa naruh, jadi ya bisa pakai placeholder
+                    {
+                        gambar = "https://via.placeholder.com/350x200?text=No+Image";
+                    }
+                }
+
+                <img src="@gambar" class="car-img-top" alt="@item.name">
+
+                <div>
+                    <h5 class="car-title-text">@item.name</h5>
+                    <p class="car-price-text">
+                        Harga: Rp @Convert.ToDecimal(item.price_per_day).ToString("N0") / hari
+                    </p>
+                </div>
+                <div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Booking"
+                           asp-action="Create"
+                           asp-route-carId="@item.Car_id"
+                           asp-route-pickupDate="@pickupStr"
+                           asp-route-returnDate="@returnStr"
+                           asp-route-sortOrder="@ViewBag.SortOrder"
+                           class="btn-sewa-custom">
+                            Sewa Sekarang
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account"
+                           asp-action="Login"
+                           asp-route-returnUrl="@Url.Action("Create", "Booking", new { carId = item.Car_id, pickupDate = pickupStr, returnDate = returnStr, sortOrder = ViewBag.SortOrder })"
+                           class="btn-sewa-custom">
+                            Sewa Sekarang
+                        </a>
+                    }
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

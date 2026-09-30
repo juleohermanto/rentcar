@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="hero-section">
+    <h1>Selamat Datang di Rental Mobil Kami</h1>
+
+    <div class="search-container">
+        <form asp-controller="Car" asp-action="Index" method="get" class="search-form">
+
+            <div class="form-group">
+                <label>Pickup Date:</label>
+                <input type="date" name="pickupDate" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Return Date:</label>
+                <input type="date" name="returnDate" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Filter Tahun Pembuatan</label>
+                <select name="year" class="form-control">
+                    <option value="">Semua Tahun</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
+
+            <div class="form-group button-group">
+                <br> <button type="submit" class="btn btn-search">Cari</button>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,557 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #F3F0FF;
+}
+
+.navbar {
+    background-color: #E6E6FA;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #F8C8C8;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.btn-secondary {
+    background-color: #F8C8C8;
+    color: #fff;
+}
+
+.btn-search {
+    background-color: #FFB6C1;
+    color: white;
+    width: 100%;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #6A5ACD;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+.hero-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+    .hero-section h1 {
+        color: #555;
+        margin-bottom: 30px;
+    }
+
+.search-container {
+    background-color: #D6E4FF;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.search-form {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex: 1;
+    text-align: left;
+}
+
+    .form-group label {
+        display: block;
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #E6E6FA;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    width: 100%;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: #E6E0FA;
+    padding: 25px 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 420px;
+    text-align: left;
+}
+
+.login-title {
+    text-align: center;
+    color: #6A5ACD;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.login-form-group {
+    margin-bottom: 12px;
+}
+
+    .login-form-group label {
+        display: block;
+        font-weight: bold;
+        color: #6A5ACD;
+        margin-bottom: 4px;
+        font-size: 0.9rem;
+    }
+
+.login-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+    .login-input::placeholder {
+        color: #aaa;
+    }
+
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: #F4C2C2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+    .btn-login:hover {
+        background-color: #E0A0A0;
+    }
+
+.login-footer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+    .login-footer a {
+        color: #777;
+        text-decoration: none;
+        font-size: 0.85rem;
+    }
+
+.car-list-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.car-grid-system {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.custom-car-card {
+    background-color: #D0E1F9;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+    .custom-car-card:hover {
+        transform: translateY(-5px);
+    }
+
+.car-img-top {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+.car-title-text {
+    color: #484870;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.car-price-text {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.btn-sewa-custom {
+    background-color: #F9D587;
+    color: white;
+    padding: 8px 25px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    display: inline-block;
+    margin-top: auto;
+    transition: 0.3s;
+}
+
+    .btn-sewa-custom:hover {
+        background-color: #eec06b;
+        color: white;
+    }
+
+@media (max-width: 768px) {
+    .car-grid-system {
+        grid-template-columns: 1fr;
+    }
+}
+
+.booking-page-wrapper {
+    background-color: #f3f0f8;
+    min-height: 100vh;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.booking-title-header {
+    text-align: center;
+    font-weight: 800;
+    color: #5a5a7e;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.booking-card-fixed {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: none;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.booking-image-box {
+    position: relative;
+    height: 240px;
+    background-color: #e9ecef;
+}
+
+    .booking-image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.nav-badge {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.nav-left {
+    left: 15px;
+}
+
+.nav-right {
+    right: 15px;
+}
+
+.booking-body {
+    padding: 25px;
+}
+
+.info-title {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+    .custom-table td {
+        padding: 10px 15px;
+        border-bottom: 1px solid #dee2e6;
+        vertical-align: middle;
+    }
+
+.td-label {
+    background-color: #f1f3f5;
+    font-weight: 700;
+    color: #495057;
+    width: 38%;
+}
+
+.td-value {
+    background-color: #fff;
+    color: #212529;
+}
+
+.btn-sewa-final {
+    display: block;
+    width: 100%;
+    background-color: #E6B8B8;
+    color: white;
+    font-weight: 700;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    text-align: center;
+    transition: 0.3s;
+}
+
+    .btn-sewa-final:hover {
+        background-color: #d4a0a0;
+        color: white;
+    }
+
+.history-wrapper {
+    background-color: #F3F0F8;
+    min-height: 100vh;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.history-title-center {
+    text-align: center;
+    font-weight: 800;
+    color: #5a5a7e;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.history-grid-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    padding: 0;
+    overflow: hidden;
+    border: none;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-table {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: collapse;
+}
+
+    .grid-table thead th {
+        background-color: #f1f1f1;
+        color: #333;
+        font-weight: 700;
+        padding: 15px;
+        border-bottom: 2px solid #ddd;
+        border-right: 1px solid #ddd;
+        font-size: 0.95rem;
+    }
+
+    .grid-table tbody td {
+        padding: 15px;
+        vertical-align: top;
+        border-bottom: 1px solid #eee;
+        border-right: 1px solid #eee;
+        color: #555;
+        font-size: 0.9rem;
+    }
+
+    .grid-table th:last-child,
+    .grid-table td:last-child {
+        border-right: none;
+    }
+
+.text-status-lunas {
+    color: #28a745;
+    font-weight: 700;
+}
+
+.text-status-belum {
+    color: #dc3545;
+    font-weight: 700;
+}
+
+.contact-wrapper {
+    background-color: #F3F0F8;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.contact-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    text-align: center;
+    border: none;
+}
+
+.contact-icon-box {
+    width: 80px;
+    height: 80px;
+    background-color: #e7fcf0;
+    color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    font-size: 2.5rem;
+}
+
+.contact-title {
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-desc {
+    color: #777;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.btn-contact-theme {
+    display: block;
+    width: 100%;
+    background-color: #E6E6FA;
+    color: #5a5a7e;
+    font-weight: 700;
+    padding: 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+}
+
+    .btn-contact-theme:hover {
+        background-color: #dcdcf5;
+        color: #333;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(90, 90, 126, 0.1);
+    }

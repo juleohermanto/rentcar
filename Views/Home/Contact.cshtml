@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Kontak Kami";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string nomorWA = "085271595999";
+    string usernameIG = "juleohermanto";
+    string pesan = "Halo!";
+}
+
+<div class="contact-wrapper">
+
+    <div class="contact-card">
+        <div style="background-color: #E6E6FA; color: #5a5a7e;">
+        </div>
+
+
+        <a href="https://wa.me/@nomorWA?text=@Uri.EscapeDataString(pesan)" target="_blank" class="btn-contact-theme">
+            <i class="bi bi-whatsapp me-2"></i> Chat via WhatsApp
+        </a>
+
+        <a href="https://instagram.com/@usernameIG" target="_blank" class="btn-contact-theme">
+            <i class="bi bi-instagram me-2"></i> Follow Instagram
+        </a>
+    </div>
+
+</div>
